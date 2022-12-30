@@ -36,13 +36,13 @@ export default {
       // { text: "🌱 计算机基础", link: "/green/ch" },
     ],
     editLink: {
-      pattern: "https://github.com/Chocolate1999/chodocs/edit/main/docs/:path",
+      pattern: "https://github.com/fbk111",
     },
     algolia,
     sidebar,
     socialLinks,
   },
   async buildEnd() {
-    await sitemap({ hostname: 'https://chodocs.cn/' });
+    await sitemap({ hostname: 'https://blogfbk.top/' });
   }
 }

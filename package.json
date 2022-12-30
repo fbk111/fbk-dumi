@@ -1,9 +1,9 @@
 {
   "name": "chodocs",
   "version": "1.0.0",
-  "description": "分享 Chocolate 前端成长记录、知识体系。",
+  "description": "分享 FBK 全栈成长记录、知识体系。",
   "private": true,
-  "author": "Chocolate<https://github.com/Chocolate1999>",
+  "author": "FBK<https://github.com/fbk111>",
   "license": "MIT",
   "scripts": {
     "dev": "vitepress dev docs --port 8080 --max-old-space-size=50000",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Chocolate1999/chodocs"
+    "url": "git+https://github.com/fbk111/fbk-dumi.git"
   },
   "keywords": [
     "react",
@@ -22,7 +22,7 @@
     "Chocolate"
   ],
   "bugs": {
-    "url": "https://github.com/Chocolate1999/chodocs/issues"
+    "url": "https://github.com/fbk111/fbk-dumi.git"
   },
   "devDependencies": {
     "sitemap-ts": "^1.1.0",
