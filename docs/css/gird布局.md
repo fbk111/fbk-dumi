@@ -27,7 +27,7 @@ grid-coloums-gap:20px//列于列之间的距离
 grid-gap:20px 20px
 ```
 ## grid-template-areas
-![](../../assets/img/2022-12-30/grid-area.png)
+![](../img/2022-12-30/grid-area.png)
 ## 对齐方式jusitify-items align-items(对容器中的每个item对齐)
 ### jusitify-items
 横向居中对齐

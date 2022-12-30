@@ -14,4 +14,4 @@
         demo[prince] = 'demo1'
         console.log(demo)
 ```
-![](../../assets/img/2022-12-24/symbol%E5%BA%94%E7%94%A8.png)
+![](../img/2022-12-24/symbol%E5%BA%94%E7%94%A8.png)
