@@ -20,7 +20,7 @@ export default {
     },
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © 2022-PRESENT Chocolate and ChoDocs contributors",
+      copyright: "Copyright © 2022-PRESENT FBK and FBK contributors",
     },
     nav: [
       { text: "🔥 算法", link: "/算法/" },
