@@ -6,7 +6,7 @@
   "author": "FBK<https://github.com/fbk111>",
   "license": "MIT",
   "scripts": {
-    "dev": "vitepress dev docs --port 8080 --max-old-space-size=50000",
+    "dev": "vitepress dev docs --port 8080",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs"
   },
