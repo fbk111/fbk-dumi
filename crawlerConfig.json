@@ -1,6 +1,6 @@
 {
-  "index_name": "chodocs",
-  "start_urls": ["https://chodocs.cn/"],
+  "index_name": "fbk",
+  "start_urls": ["http://blogfbk.top/"],
   "rateLimit": 8,
   "maxDepth": 10,
   "selectors": {
