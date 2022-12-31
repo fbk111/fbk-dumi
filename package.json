@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vitepress dev docs --port 8080",
     "build": "vitepress build docs",
-    "serve": "vitepress serve docs"
+    "serve": "vitepress serve docs --port 8080"
   },
   "repository": {
     "type": "git",
