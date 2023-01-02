@@ -24,7 +24,8 @@ export default {
       { text: "有效的字母异位词", link: "/算法/有效的字母异位词-242.md" },
       { text: "有序数组的平方", link: "/算法/有序数组的平方-977.md" },
       { text: "长度最小的数组", link: "/算法/长度最小的数组-207.md" },
-      { text: "两数之和", link: "/算法/两数之和-1.md" }],
+      { text: "两数之和", link: "/算法/两数之和-1.md" },
+      { text: "四数相加2", link: "/算法/四数相加2-454.md" }],
     },
     {
       text: "📘 JS 学习",
@@ -54,6 +55,15 @@ export default {
       items: [
         { text: "java阅读", link: "/java/index.md" },
         { text: "proxy", link: "/java/Proxy.md" }
+      ],
+    },
+    {
+      text: "📗 netty",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        { text: "netty阅读", link: "/Netty/index.md" },
+        { text: "ByteBuffer", link: "/Netty/ByteBuffer.md" }
       ],
     },
     {

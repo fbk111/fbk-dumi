@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,d as l}from"./app.ea321bc5.js";const i=JSON.parse('{"title":"螺旋矩阵-对应力扣59-中等","description":"","frontmatter":{},"headers":[],"relativePath":"算法/螺旋矩阵2-59.md","lastUpdated":1672415033000}'),p={name:"算法/螺旋矩阵2-59.md"},o=l("",4),e=[o];function t(c,r,D,y,F,C){return n(),a("div",null,e)}const b=s(p,[["render",t]]);export{i as __pageData,b as default};
