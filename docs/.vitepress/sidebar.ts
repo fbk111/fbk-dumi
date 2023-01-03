@@ -25,7 +25,9 @@ export default {
       { text: "有序数组的平方", link: "/算法/有序数组的平方-977.md" },
       { text: "长度最小的数组", link: "/算法/长度最小的数组-207.md" },
       { text: "两数之和", link: "/算法/两数之和-1.md" },
-      { text: "四数相加2", link: "/算法/四数相加2-454.md" }],
+      { text: "四数相加2", link: "/算法/四数相加2-454.md" },
+      { text: "反转字符", link: "/算法/反转字符-344.md" },
+      { text: "js实现数据结构", link: "/算法/js实现数据结构.md" }],
     },
     {
       text: "📘 JS 学习",
@@ -63,7 +65,10 @@ export default {
       collapsed: false,
       items: [
         { text: "netty阅读", link: "/Netty/index.md" },
-        { text: "ByteBuffer", link: "/Netty/ByteBuffer.md" }
+        { text: "Path", link: "/Netty/Path.md" },
+        { text: "ByteBuffer", link: "/Netty/ByteBuffer.md" },
+        { text: "FileChannel", link: "/Netty/FileChannel.md" },
+        { text: "selector", link: "/Netty/selector.md" }
       ],
     },
     {
@@ -90,7 +95,8 @@ export default {
       collapsed: false,
       items: [
         { text: "vue阅读", link: "/vue/index.md" },
-        { text: "provide和inject", link: "/vue/provide和inject.md" }
+        { text: "provide和inject", link: "/vue/provide和inject.md" },
+        { text: "vue2的组件通信", link: "/vue/vue2的组件通信.md" }
       ],
     },
     {
@@ -99,7 +105,8 @@ export default {
       collapsed: false,
       items: [
         { text: "css阅读", link: "/css/index.md" },
-        { text: "gird布局", link: "/css/gird布局.md" }
+        { text: "gird布局", link: "/css/gird布局.md" },
+        { text: "css小知识", link: "/css/css小知识.md" }
       ],
     },
   ],
@@ -126,7 +133,6 @@ export default {
   '/essay/': [
     {
       items: [
-        { text: "聊聊近况，差点账号被永久封禁...", link: "/essay/ch1" },
       ],
     },
   ]

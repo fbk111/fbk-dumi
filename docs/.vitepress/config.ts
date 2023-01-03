@@ -29,7 +29,7 @@ export default {
       { text: "✏️ vue", link: "/vue/" },
       { text: "🌱 react", link: "/react/" },
       { text: "🔥 spring", link: "/spring/" },
-      { text: "🔥 c", link: "/c/" },
+      { text: "🔥 netty", link: "/Netty/" },
       { text: "🔧 python", link: "/python/" },
       { text: "✏️ go", link: "/go/" },
       { text: "🌱 ts", link: "/ts/" },

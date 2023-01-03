@@ -170,3 +170,39 @@ System.out.println(byteBuffer.toString())
 |00000000| 66 69 76 65                                     |five            |
 +--------+-------------------------------------------------+----------------+
 ```
+### Demo
+网络上有多条数据发送给服务端，数据之间使用 \n 进行分隔 但由于某种原因这些数据在接收时，被进行了重新组合，例如原始数据有3条为
+* Hello,world\n
+* I'm zhangsan\n
+* How are you?\n
+
+变成了下面的两个 byteBuffer (黏包，半包)
+
+* Hello,world\nI'm zhangsan\nHo
+* w are you?\n
+```java
+    public static void main(String[] args) {
+        ByteBuffer source = ByteBuffer.allocate(32);
+        source.put("Hello,world\nI'm zhangsan\nHo".getBytes());
+        split(source);
+
+        source.put("w are you?\nhaha!\n".getBytes());
+        System.out.println(2+""+source);
+        split(source);
+    }
+    public static void split(ByteBuffer source){
+        source.flip();
+        for(int i=0;i<source.limit();i++){
+            if(source.get(i)=='\n'){//为什么这里是get(i)，因为要记录一开始的位置，所以只能用get(i)让position不移动
+                int length=i+1-source.position();
+                for(int j=0;j<length;j++){
+                    target.put(source.get());//这里是get
+                }
+            }
+        }
+        source.compact();
+    }
+```
+#### get(i)和get()区别
+1. get(i)不会移动position
+2. get()会移动position
