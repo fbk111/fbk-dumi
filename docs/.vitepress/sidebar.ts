@@ -27,7 +27,9 @@ export default {
       { text: "两数之和", link: "/算法/两数之和-1.md" },
       { text: "四数相加2", link: "/算法/四数相加2-454.md" },
       { text: "反转字符", link: "/算法/反转字符-344.md" },
-      { text: "js实现数据结构", link: "/算法/js实现数据结构.md" }],
+      { text: "js实现数据结构", link: "/算法/js实现数据结构.md" },
+    { text: "反转字符串2", link: "/算法/反转字符串2-541.md" },
+  { text: "用栈实现队列", link: "/算法/用栈实现队列.md" }],
     },
     {
       text: "📘 JS 学习",
@@ -48,6 +50,10 @@ export default {
         { text: "js上下文", link: "/js/js上下文.md" },
         { text: "Symbol类型", link: "/js/Symbol类型.md" },
         { text: "type和instanceof", link: "/js/type和instanceof.md" },
+        { text: "33个常用js代码", link: "/js/33个常用js代码.md" },
+        { text: "常用正则表达式", link: "/js/常用正则表达式.md" },
+                { text: "对调变量", link: "/js/对调变量.md" },
+                { text: "JQuery", link: "/js/JQuery.md" },
       ],
     },
     {
@@ -56,7 +62,10 @@ export default {
       collapsed: false,
       items: [
         { text: "java阅读", link: "/java/index.md" },
-        { text: "proxy", link: "/java/Proxy.md" }
+        { text: "proxy", link: "/java/Proxy.md" },
+         { text: "IO基础", link: "/java/IO基础.md" },
+          { text: "IO模型详解", link: "/java/IO模型详解.md" },
+           { text: "IO设计模式", link: "/java/IO设计模式.md" }
       ],
     },
     {
@@ -106,7 +115,8 @@ export default {
       items: [
         { text: "css阅读", link: "/css/index.md" },
         { text: "gird布局", link: "/css/gird布局.md" },
-        { text: "css小知识", link: "/css/css小知识.md" }
+        { text: "css小知识", link: "/css/css小知识.md" },
+         { text: "flex布局", link: "/css/flex布局.md" }
       ],
     },
   ],

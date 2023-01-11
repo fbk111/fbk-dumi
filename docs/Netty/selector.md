@@ -156,8 +156,20 @@ System.out.println('waiting')
                     SelectionKey key = iter.next();
                     if(key.isAcceptable()){
                         //判断事件类型
+                        try{
                         ServerSocketChannel c = (ServerSocketChannel)key.channel();
-                        SocketChannel sc = c.accept();//处理事件
+                        ByteBuffer buffer=ByteBuffer.allocate(16);
+                        int read=channel.read(buffer);//正常断开返回-1
+                        if(read==-1){
+                            key.cancel()
+                        }else{
+                            buffer.flip();
+                            
+                        }
+                        }catch(IOEcpection e){
+                            e.printStarce();
+                            key.cancel();
+                        }
                         
                     }
                     iter.remove();//删除事件
@@ -166,3 +178,10 @@ System.out.println('waiting')
         }
     }
 ```
+
+### 为什么进行iter.remove()
+- 在select事件触发后，将相关的key放在selectKeys中，但不会移除，such as
+- 第一次触发accept事件，没有移除sscKey
+- 第二次触发scKey中的read事件，在集合中还有上次的sscKey，在处理没有serverSocket连接，就会导致空指针
+### 💡 cancel
+- cancel会取消注册在selector的channel，并从keys集合删除key
