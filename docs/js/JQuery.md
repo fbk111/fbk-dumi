@@ -4,8 +4,69 @@
 时间：2023-1-6
 地点：济南
 >足够优秀再大方拥有
+## Jquery对象
+- 原生dom对象获取 document.querySelector('div')
+- jq对象获取 $('div')
+
+
+jq查询的对象是对dom对象进行封装后产生的对象，已伪数组形式存储
+
+将jq选择器中的兑现转化为dom对象就需要使用索引将伪书组的元素拿出来
 ## JQ选择器
-jq中除了可以对class，id，element进行筛选，还可以对以下几个进行筛选
+jq中除了可以对class，id，element进行筛选，还可以对以下几个进行筛选，jq只能使用自己封装的方法操作自己查询的对象
+## jq事件绑定
+```html
+<div></div>
+<script>
+  $('div').on({
+    click:function(){
+      console.log(1)
+    },
+    mouseover:function(){
+      console.log(1)
+    }
+  })
+</script>
+```
+## jq遍历
+```html
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+  $('div').each((index,domEle){
+    console.log(index)
+    //domEle是dom对象
+  })
+</script>
+```
+## jq修改css
+```html
+<div></div>
+<script>
+$('div').css({
+  backgroundColor:'red',
+  width:300,
+  height:400
+})
+</script>
+```
+
+## jq隐式迭代
+```html
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<script>
+  $('ul li').css('backgorund','red')
+  //这里所有的li背景颜色都会变成red，这就是饮食迭代，jq会将匹配数组中所有的匹配数组进行遍历循环，然后给每个元素添加css方法
+</script>
+```
+
 ```js
 //筛选隐藏元素
 <div class="demo">111</div>

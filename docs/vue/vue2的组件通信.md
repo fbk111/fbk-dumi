@@ -112,4 +112,4 @@ provide(){
 inject:['foo']
 ```
 ### vuex
-后边我会开一章单独说
+[vuex笔记](./vuex.md)

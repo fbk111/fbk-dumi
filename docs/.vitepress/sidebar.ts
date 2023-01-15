@@ -29,7 +29,7 @@ export default {
       { text: "反转字符", link: "/算法/反转字符-344.md" },
       { text: "js实现数据结构", link: "/算法/js实现数据结构.md" },
     { text: "反转字符串2", link: "/算法/反转字符串2-541.md" },
-  { text: "用栈实现队列", link: "/算法/用栈实现队列.md" }],
+  { text: "用栈实现队列", link: "/算法/用栈实现队列.md" }]
     },
     {
       text: "📘 JS 学习",
@@ -54,6 +54,7 @@ export default {
         { text: "常用正则表达式", link: "/js/常用正则表达式.md" },
                 { text: "对调变量", link: "/js/对调变量.md" },
                 { text: "JQuery", link: "/js/JQuery.md" },
+                { text: "promise执行机制", link: "/js/primise的执行机制.md" }
       ],
     },
     {
@@ -65,7 +66,9 @@ export default {
         { text: "proxy", link: "/java/Proxy.md" },
          { text: "IO基础", link: "/java/IO基础.md" },
           { text: "IO模型详解", link: "/java/IO模型详解.md" },
-           { text: "IO设计模式", link: "/java/IO设计模式.md" }
+           { text: "IO设计模式", link: "/java/IO设计模式.md" },
+           { text: "java并发（上）", link: "/java/java并发（上）.md" },
+           { text: "项目开发1", link: "/java/项目开发1.md" },
       ],
     },
     {
@@ -88,7 +91,8 @@ export default {
         { text: "react阅读", link: "/react/index.md" },
         { text: "react的生命周期", link: "/react/react的生命周期.md" },
       { text: "React组件通信", link: "/react/React组件通信.md" },
-      { text: "state和props的区别", link: "/react/state和props的区别.md" }],
+      { text: "state和props的区别", link: "/react/state和props的区别.md" },
+      { text: "react的hook", link: "/react/react的hook.md" }],
     },
     {
       text: "📝 spring+springboot",
@@ -105,7 +109,8 @@ export default {
       items: [
         { text: "vue阅读", link: "/vue/index.md" },
         { text: "provide和inject", link: "/vue/provide和inject.md" },
-        { text: "vue2的组件通信", link: "/vue/vue2的组件通信.md" }
+        { text: "vue2的组件通信", link: "/vue/vue2的组件通信.md" },
+        { text: "vuex", link: "/vue/vuex.md" }
       ],
     },
     {
