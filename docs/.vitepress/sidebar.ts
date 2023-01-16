@@ -29,7 +29,9 @@ export default {
       { text: "反转字符", link: "/算法/反转字符-344.md" },
       { text: "js实现数据结构", link: "/算法/js实现数据结构.md" },
     { text: "反转字符串2", link: "/算法/反转字符串2-541.md" },
-  { text: "用栈实现队列", link: "/算法/用栈实现队列.md" }]
+  { text: "用栈实现队列", link: "/算法/用栈实现队列.md" },
+  { text: "删除字符串中所有相临重复项", link: "/算法/删除字符串中所有相临重复项-1047.md" },
+  { text: "有效的括号", link: "/算法/有效的括号-20.md" }]
     },
     {
       text: "📘 JS 学习",
@@ -72,6 +74,24 @@ export default {
       ],
     },
     {
+      text: "📗 kotlin",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        { text: "kotlin阅读", link: "/kotlin/index.md" },
+        { text: "kotlin的基本用法", link: "/kotlin/kotlin的基本用法.md" },
+      ],
+    },
+    {
+      text: "📗 mysql",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        { text: "mysql阅读", link: "/mysql/index.md" },
+        { text: "SQL注入", link: "/mysql/SQL注入.md" },
+      ],
+    },
+    {
       text: "📗 netty",
       collapsible: true,
       collapsed: false,
@@ -110,7 +130,8 @@ export default {
         { text: "vue阅读", link: "/vue/index.md" },
         { text: "provide和inject", link: "/vue/provide和inject.md" },
         { text: "vue2的组件通信", link: "/vue/vue2的组件通信.md" },
-        { text: "vuex", link: "/vue/vuex.md" }
+        { text: "vuex", link: "/vue/vuex.md" },
+        { text: "vueRouter", link: "/vue/vueRouter.md" },
       ],
     },
     {
