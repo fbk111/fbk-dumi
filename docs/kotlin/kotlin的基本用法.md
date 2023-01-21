@@ -93,3 +93,58 @@ class Person constructor(firstName:String)
 ```java
 class Person(firstName:String)
 ```
+## 属性
+使用var声明的属性是可变的，使用val声明只是可写的
+```java
+class Adress{
+        var name: String = "Holmes, Sherlock"
+    var street: String = "Baker"
+    var city: String = "London"
+    var state: String? = null
+    var zip: String = "123456"
+}
+```
+### Getter-Setter
+在val声明的属性是只读，只有getter没有setter
+
+自定义属性getter函数
+```java
+class Rectangle(val width:Int,val height:Int){
+    val area:Int
+    get() = this.width * this.height
+}
+
+fun main(){
+    val rectangle=Rectangle(3,4)
+
+}
+```
+
+## 接口
+```java
+interface MyInterface{
+    fun bar()
+    fun foo()
+}
+class Child:MyInterface{
+
+}
+```
+## 可见修饰符
+- private 只在本文件内可用
+- protected 
+- internal 模块可见
+- public 默认修饰符
+
+例如
+```java
+//文件名字example.kt
+package foo
+private fun foo(){} 在example.kt可见
+public var bar: Int = 5 // 该属性随处可见
+private set         // setter 只在 example.kt 内可见
+
+internal val baz = 6    // 相同模块内可见
+```
+
+## 拓展函数
