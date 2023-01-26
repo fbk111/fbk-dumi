@@ -4,8 +4,12 @@
 时间：2022-12-22
 地点：济南
 >足够优秀再大方拥有
+## slice和splice
+只需要记住slice(start,end),并且返回一个新数组
 
-# 1. 操作方法
+splice(start,deleteCount,item1,item2...)，并且splice是一个在原数组的基础上进行操作的方法
+
+## 1. 操作方法
 可以分成增删改查
 # 2，增
 - push
@@ -40,7 +44,7 @@ console.log(colors)
 let colors=['red','green','blue']
 let colors1=colors.concat('yellow',['black','brown'])
 ```
-# 2. 删
+## 2. 删
 - pop
 - unshift
 - splice
@@ -75,14 +79,14 @@ console.log(colors)   // red,green,blue,yellow,purple
 concole.log(colors2); // green,blue,yellow,purple
 concole.log(colors3); // green,blue,yellow
 ```
-# 3.改
+## 3.改
 - splice
 ```js
 let colors = ["red", "green", "blue"];
 let removed=colors.splice(1,1,'red','purple')
 ```
 
-# 4.查
+## 4.查
 - indexof
 - includes
 - find
@@ -113,7 +117,7 @@ const people = [
 ];
 people.find((element, index, array) => element.age < 28) // // {name: "Matt", age: 27}
 ```
-# 5.数组排序
+## 5.数组排序
 - reverse
 - sort
 
@@ -131,7 +135,7 @@ function(a,b){
     return b-a//降序排列
 }
 ```
-# 2.ES6中的新增的数组拓展
+## 2.ES6中的新增的数组拓展
 es6拓展符...
 ```js
 console.log(...[1,2,3])
@@ -177,8 +181,8 @@ Array()[]
 Array(3)//[,,,]
 Array(3, 11, 8) // [3, 11, 8]
 ```
-# 实例对象新增的方法
-## copyWithin()
+## 实例对象新增的方法
+### copyWithin()
 将指定位置的成员复制到其他位置（会覆盖原有成员），然后返回原数组<br/>
 参数<br>
 - target(必须)：从该位置开始替换数组
@@ -188,7 +192,7 @@ Array(3, 11, 8) // [3, 11, 8]
 [1, 2, 3, 4, 5].copyWithin(0, 3) // 将从 3 号位直到数组结束的成员（4 和 5），复制到从 0 号位开始的位置，结果覆盖了原来的 1 和 2
 // [4, 5, 3, 4, 5] 
 ```
-## fill填充数组
+### fill填充数组
 ```js
 ['a','b','c'].fill(7)
 //[7,7,7]

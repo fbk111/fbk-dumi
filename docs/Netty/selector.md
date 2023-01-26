@@ -92,6 +92,7 @@ System.out.println('waiting')
         Selector selector = Selector.open();
 ```
 ### 绑定socketChannel事件
+只有注册后的事件selector才会关心
 ```java
         Selector selector = Selector.open();
         SocketChannel socketChannel = SocketChannel.open();
@@ -148,7 +149,7 @@ System.out.println('waiting')
             channel.configureBlocking(false);
             channel.register(selector, SelectionKey.OP_ACCEPT);
             while(true){
-                int count = selector.select();//没有事件的时候阻塞
+                int count = selector.select();//没有绑定事件的时候阻塞，也就是没有服务端响应客户端连接前一直阻塞
                 Set<SelectionKey> keys = selector.selectedKeys();//获取所有事件accept
                 Iterator<SelectionKey> iter = keys.iterator();
                 while(iter.hasNext()){
@@ -184,4 +185,31 @@ System.out.println('waiting')
 - 第一次触发accept事件，没有移除sscKey
 - 第二次触发scKey中的read事件，在集合中还有上次的sscKey，在处理没有serverSocket连接，就会导致空指针
 ### 💡 cancel
-- cancel会取消注册在selector的channel，并从keys集合删除key
+- cancel会取消注册在selector的channel，并从keys集合删除key，selector不再监听channel
+### 不处理边界的问题
+
+服务器端
+```java
+public void Server(){
+            ServerSocket ss = new ServerSocket(8080);
+        while(true){
+            Socket s = ss.accept();
+            InputStream in = s.getInputStream();
+            byte[] arr=new byte[4];
+            while (true){
+                int read = in.read(arr);
+                if(read==-1){
+                    break;
+                }
+                System.out.println(new String(arr,0,read));
+            }
+        }
+}
+```
+客户端
+```java
+Socket socket=new Socket("localhost",8080);
+OutputStream out=socket.getOutputStream();
+out.write("hello".getBytes());
+sicket.close();
+```
