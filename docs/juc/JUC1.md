@@ -469,3 +469,89 @@ class ThreadSafe {
 - hashtable
 - java.util.concurrent
 
+## monitor
+### wait和notify
+- `obj.wait()`进入obj监视器的线程到waitSet进行等待
+- `obj.notify()`在obj上正在waitSet等待的线程中挑一个唤醒
+- `obj.notigyAll()`在obj上则会那个在waitSet等待的线程全部唤醒
+### sleep和wait的区别
+sleep是Thread的方法，wait是Object的方法，但 wait 需要
+和 synchronized 一起用 3) sleep 在睡眠的同时，不会释放对象锁的，但 wait 在等待的时候会释放对象锁，状态 TIMED_WAITING
+### pack和unpark
+他们是LockSupport方法
+```java
+LockSupport.park();
+LockSupport.unpark(暂停线程对象);
+```
+### 重新理解线程状态转换
+#### new->runnable
+- 调用`t.start`
+#### runnable<->waiting
+t线程使用synchronizd(obj)获取对象后
+- `obj.wait`,t线程从runnable->waiting
+- `obj.notify`,`obj.notifyAll`,`t.interrupt`
+  - 竞争锁成功，t线程从waiting-》runnable
+  - 竞争锁失败，t线程从waiting-》blocked
+#### runnable<->waiting
+- `t.join`线程从runnable-》waiting
+- `interrupt`线程从waiting-》runnable
+#### runnable<->TIMED_WAITING
+### 多把锁
+### 活跃性
+#### 死锁
+如果一个线程同时获取多把锁，就会发生死锁
+```java
+        Object A = new Object();
+        Object B = new Object();
+        Thread t1=new Thread(()->{
+            synchronized (A){
+                log.debug("start");
+                synchronized (B){
+                    log.debug("lock b");
+                    log.debug("造作");
+                }
+            }
+        },"t1");
+        Thread t2=new Thread(()->{
+            synchronized (B){
+                log.debug("start");
+                synchronized (A){
+                    log.debug("lock b");
+                    log.debug("造作");
+                }
+            }
+        },"t2");
+        t1.start();
+        t2.start();
+```
+#### 活锁
+```java
+    static volatile int count=10;
+    static Object lock=new Object();
+
+    public static void main(String[] args) {
+        new Thread(()->{
+            while (count>0){
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                count--;
+                log.debug("count:{}",count);
+            }
+        },"t1").start();
+        
+        new Thread(()->{
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            count++;
+            log.debug("count{}",count);
+        },"t2").start();
+    }
+```
+
+
