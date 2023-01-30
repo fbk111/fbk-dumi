@@ -41,6 +41,8 @@ export default {
         { text: "对称二叉树", link: "/算法/对称二叉树-101.md" },
         { text: "二叉树的最大深度", link: "/算法/二叉树的最大深度-104.md" },
         { text: "二叉树的最小深度", link: "/算法/二叉树的最小深度-111.md" },
+        { text: "平衡二叉树", link: "/算法/平衡二叉树-110.md" },
+        { text: "完全二叉树的节点个数", link: "/算法/完全二叉树的节点个数-222.md" },
       ],
     },
     {
@@ -94,18 +96,22 @@ export default {
       text: "🦁 JUC",
       collapsible: true,
       collapsed: false,
-      items: [{ text: "jvm1", link: "/jvm/jvm1.md" },
-      { text: "jvm2", link: "/jvm/jvm2.md" },
-    ],
+      items: [
+        { text: "jvm1", link: "/jvm/jvm1.md" },
+        { text: "jvm2", link: "/jvm/jvm2.md" },
+        { text: "jvm3", link: "/jvm/jvm3.md" },
+      ],
     },
     {
       text: "📗 JVM",
       collapsible: true,
       collapsed: false,
-      items: [{ text: "juc1", link: "/juc/JUC1.md" },
-      { text: "juc2", link: "/juc/JUC2.md" },
-      { text: "juc3", link: "/juc/JUC3.md" },
-    ],
+      items: [
+        { text: "juc1", link: "/juc/JUC1.md" },
+        { text: "juc2", link: "/juc/JUC2.md" },
+        { text: "juc3", link: "/juc/JUC3.md" },
+        { text: "juc4", link: "/juc/JUC4.md" },
+      ],
     },
     {
       text: "📗 python",
