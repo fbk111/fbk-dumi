@@ -43,6 +43,9 @@ export default {
         { text: "二叉树的最小深度", link: "/算法/二叉树的最小深度-111.md" },
         { text: "平衡二叉树", link: "/算法/平衡二叉树-110.md" },
         { text: "完全二叉树的节点个数", link: "/算法/完全二叉树的节点个数-222.md" },
+        { text: "二叉树的所有路径", link: "/算法/二叉树的所有路径-257.md" },
+        { text: "二叉树搜索", link: "/算法/二叉树搜索-700.md" },
+        { text: "二叉搜索树的众数", link: "/算法/二叉搜索树的众数-501.md" },
       ],
     },
     {
@@ -100,6 +103,8 @@ export default {
         { text: "jvm1", link: "/jvm/jvm1.md" },
         { text: "jvm2", link: "/jvm/jvm2.md" },
         { text: "jvm3", link: "/jvm/jvm3.md" },
+        { text: "jvm4", link: "/jvm/jvm4.md" },
+        { text: "jvm5", link: "/jvm/jvm5.md" },
       ],
     },
     {
@@ -111,6 +116,7 @@ export default {
         { text: "juc2", link: "/juc/JUC2.md" },
         { text: "juc3", link: "/juc/JUC3.md" },
         { text: "juc4", link: "/juc/JUC4.md" },
+        { text: "juc5", link: "/juc/JUC5.md" },
       ],
     },
     {

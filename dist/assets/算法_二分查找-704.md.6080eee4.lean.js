@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,a as l}from"./app.aadc4c29.js";const F=JSON.parse('{"title":"二分查找-对应力扣704-简单","description":"","frontmatter":{},"headers":[],"relativePath":"算法/二分查找-704.md","lastUpdated":1672454661000}'),p={name:"算法/二分查找-704.md"},e=l("",11),o=[e];function t(r,c,D,i,y,C){return n(),a("div",null,o)}const d=s(p,[["render",t]]);export{F as __pageData,d as default};
