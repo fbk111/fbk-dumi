@@ -96,7 +96,7 @@ export default {
       ],
     },
     {
-      text: "🦁 JUC",
+      text: "🦁 JVM",
       collapsible: true,
       collapsed: false,
       items: [
@@ -105,6 +105,7 @@ export default {
         { text: "jvm3", link: "/jvm/jvm3.md" },
         { text: "jvm4", link: "/jvm/jvm4.md" },
         { text: "jvm5", link: "/jvm/jvm5.md" },
+        { text: "jvm6", link: "/jvm/jvm6.md" },
       ],
     },
     {
@@ -156,6 +157,7 @@ export default {
         { text: "ByteBuffer", link: "/Netty/ByteBuffer.md" },
         { text: "FileChannel", link: "/Netty/FileChannel.md" },
         { text: "selector", link: "/Netty/selector.md" },
+        { text: "netty1", link: "/Netty/netty1.md" },
       ],
     },
     {
