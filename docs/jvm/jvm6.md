@@ -461,8 +461,74 @@ public class 	StringIntern {
 }
 
 ```
-```java
 
-```
+## intern
 ### intern方法
+```java
+public native String intern();
 ```
+1. intern是一个native方法，调用的时底层c的方法
+2. 字符串常量池池最初是空的，由String类私有地维护。在调用intern方法时，如果池中已经包含了由equals(object)方法确定的与该字符串内容相等的字符串，则返回池中的字符串地址。否则，该字符串对象将被添加到池中，并返回对该字符串对象的地址。（这是源码里的大概翻译）
+3. 如果不使用双引号的String对象，可以使用String提供的intern方法，intern方法从字符串常量池中查询当前字符串是否存在，如果不存在就将字符串放在常量池
+```java
+    private static void demo1(){
+        String s1="fbk";
+        String s2=new String("fbk").intern();
+        System.out.println(s1==s2);
+    }
+```
+4. 也就是说，如果在任意字符串上调用String.intern方法，那么其返回结果所指向的那个类实例，必须和直接以常量形式出现的字符串实例完全相同。因此，下列表达式的值必定是true
+```java
+ ("a"+"b"+"c").intern()=="abc"
+```
+5. 通俗点讲，Interned String就是确保字符串在内存里只有一份拷贝，这样可以节约内存空间，加快字符串操作任务的执行速度。注意，这个值会被存放在字符串内部池（String Intern Pool）
+### intern方法练习
+#### 总结
+- 在kdk1.6之前中，使用intern将这个字符串尝试放入串池
+  - 如果串池中存在，则并不会放入，放回在串池中存在的对象地址
+  - 如果在串池中不存在，就会把此对象复制一份，放入串池，并返回串池中的对象地址
+- 在kdk7以后，使用intern将这个字符串尝试放入串池
+  - 如果串池中存在，则并不会放入，放回在串池中存在的对象地址
+  - 如果不存在，则会把对象的引用地址复制一份，放入串池，并返回串池中的引用地址
+### intern空间效率测试
+```java
+/**
+ * 使用intern()测试执行效率：空间使用上
+ *
+ * 结论：对于程序中大量存在存在的字符串，尤其其中存在很多重复字符串时，使用intern()可以节省内存空间。
+ *
+ */
+public class StringIntern2 {
+    static final int MAX_COUNT = 1000 * 10000;
+    static final String[] arr = new String[MAX_COUNT];
+
+    public static void main(String[] args) {
+        Integer[] data = new Integer[]{1,2,3,4,5,6,7,8,9,10};
+
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < MAX_COUNT; i++) {
+          arr[i] = new String(String.valueOf(data[i % data.length]));
+//            arr[i] = new String(String.valueOf(data[i % data.length])).intern();
+
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("花费的时间为：" + (end - start));
+
+        try {
+            Thread.sleep(1000000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.gc();
+    }
+}
+```
+直接使用new String，每个String对象都是new出来的，所以堆内存需要维护大量的String实例，JVM内存占用也会变多
+
+```java
+//调用了intern()方法使用了字符串常量池里的字符串，那么前面堆里的字符串便会被GC掉，这也是intern省内存的关键原因
+arr[i] = new String(String.valueOf(data[i % data.length])).intern();
+```
+如果使用intern，在存在多个重复字符串的时候，使用intern可以节省很大的空间
+
+大的网站平台，需要内存中存储大量的字符串。比如社交网站，很多人都存储：北京市、海淀区等信息。这时候如果字符串都调用intern() 方法，就会很明显降低内存的大小。

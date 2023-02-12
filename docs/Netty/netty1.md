@@ -704,3 +704,85 @@ read index:4 write index:8 capacity:16
 ```
 
 #### 释放
+由于netty有堆外内存，堆外内存最好是`使用手动释放`，而不是等待GC
+- UnpooledHeapByteBuf 使用的是 JVM 内存，只需等 GC 回收内存即可
+- UnpooledDirectByteBuf 使用的就是直接内存了，需要特殊的方法来回收内存
+- PooledByteBuf 和它的子类使用了池化机制，需要更复杂的规则来回收内存
+
+`释放规则`
+
+因为 pipeline 的存在，一般需要将 ByteBuf 传递给下一个 ChannelHandler，如果在每个 ChannelHandler 中都去调用 release ，就失去了传递性（如果在这个 ChannelHandler 内这个 ByteBuf 已完成了它的使命，那么便无须再传递）
+
+`基本规则`
+
+- 谁最后调用byteBuf，谁就负责release
+- 入站 ByteBuf 处理原则
+  - 对原始 ByteBuf 不做处理，调用 ctx.fireChannelRead(msg) 向后传递，这时无须 release
+  - 将原始 ByteBuf 转换为其它类型的 Java 对象，这时 ByteBuf 就没用了，必须 release
+  - 如果不调用 ctx.fireChannelRead(msg) 向后传递，那么也必须 release
+  - 注意各种异常，如果 ByteBuf 没有成功传递到下一个 ChannelHandler，必须 release
+  - 假设消息一直向后传，那么 TailContext 会负责释放未处理消息（原始的 ByteBuf）
+- 出站 ByteBuf 处理原则
+  - 出站消息最终都会转为 ByteBuf 输出，一直向前传，由 HeadContext flush 后 release
+- 异常处理原则
+  - 有时候不清楚 ByteBuf 被引用了多少次，但又必须彻底释放，可以循环调用 release 直到返回 true
+  ```java
+  while (!buffer.release()) {}
+  ```
+- 当ByteBuf被传到了pipeline的head与tail时，ByteBuf会被其中的方法彻底释放，但前提是ByteBuf被传递到了head与tail中
+
+`TailConext中释放ByteBuf的源码`
+```java
+public static boolean release(Object msg) {
+	return msg instanceof ReferenceCounted ? ((ReferenceCounted)msg).release() : false;
+}
+```
+
+### 切片
+ByteBuf切片是【零拷贝】的体现之一，对原始 ByteBuf 进行切片成多个 ByteBuf，切片后的 ByteBuf 并没有发生内存复制，还是使用原始 ByteBuf 的内存，切片后的 ByteBuf 维护独立的 read，write 指针
+
+得到分片后的buffer后，要调用其retain方法，使其内部的引用计数加一。避免原ByteBuf释放，导致切片buffer无法使用
+
+修改原ByteBuf中的值，也会影响切片后得到的ByteBuf
+
+```java
+    private static void testSplice(){
+        ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer(16, 20);
+
+        buffer.writeBytes(new byte[]{1,2,3,4,5,6,7,8,9,10});
+        //将buffer切成两部分
+        ByteBuf slice1 = buffer.slice(0, 5);
+
+        ByteBuf slice2 = buffer.slice(5, 5);
+
+        //为了避免buffer删除后如果使用slice1和slice2，那么就会抛出异常,使用retain()在buffer的计数器+1，在buffer使用release()就会先判断计数器上的是否>0,如果大于0则不删除
+
+        slice1.retain();
+
+        slice2.retain();
+
+        //修改slice的值，buffer的值也会修改
+
+        slice1.setByte(0,'a');
+
+        //浅拷贝buffer的所有内容,堆内存的地址还是没有变化
+
+        ByteBuf duplicate = buffer.duplicate();
+
+        //深拷贝，在堆内存创建新对象
+
+        ByteBuf copy = buffer.copy();
+
+        //合并两个buffer
+
+        ByteBuf composite1 = ByteBufAllocator.DEFAULT.buffer(5);
+        composite1.writeBytes(new byte[]{1,2,3,4,5});
+        ByteBuf composite2 = ByteBufAllocator.DEFAULT.buffer(5);
+        composite2.writeBytes(new byte[]{6,7,8,9,10});
+
+        CompositeByteBuf compositeByteBuf = ByteBufAllocator.DEFAULT.compositeBuffer(10);
+        
+        compositeByteBuf.addComponents(true,composite1,composite2);
+
+    }
+```

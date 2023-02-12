@@ -93,6 +93,7 @@ export default {
         { text: "java并发（上）", link: "/java/java并发（上）.md" },
         { text: "项目开发1", link: "/java/项目开发1.md" },
         { text: "BIO和NIO的区别", link: "/java/BIO和NIO的区别.md" },
+        { text: "JAVA8新特性", link: "/java/java8.md" },
       ],
     },
     {
@@ -106,6 +107,8 @@ export default {
         { text: "jvm4", link: "/jvm/jvm4.md" },
         { text: "jvm5", link: "/jvm/jvm5.md" },
         { text: "jvm6", link: "/jvm/jvm6.md" },
+        { text: "jvm7", link: "/jvm/jvm7.md" },
+        { text: "jvm8", link: "/jvm/jvm8.md" },
       ],
     },
     {
@@ -158,6 +161,7 @@ export default {
         { text: "FileChannel", link: "/Netty/FileChannel.md" },
         { text: "selector", link: "/Netty/selector.md" },
         { text: "netty1", link: "/Netty/netty1.md" },
+        { text: "netty2", link: "/Netty/netty2.md" },
       ],
     },
     {
