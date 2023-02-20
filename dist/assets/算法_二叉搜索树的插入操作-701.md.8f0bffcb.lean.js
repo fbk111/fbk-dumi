@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,a as l}from"./app.05a04f5e.js";const C=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"算法/二叉搜索树的插入操作-701.md","lastUpdated":1676212890000}'),p={name:"算法/二叉搜索树的插入操作-701.md"},o=l("",4),e=[o];function t(r,c,y,i,D,F){return n(),a("div",null,e)}const b=s(p,[["render",t]]);export{C as __pageData,b as default};
