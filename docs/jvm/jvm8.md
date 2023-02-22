@@ -24,7 +24,7 @@ public class SystemGCTest {
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
-        System.out.println("SystemGCTest 重写了finalize()");
+        System.out.println("SystemGCTest ()");
     }
 }
 ```
@@ -35,6 +35,80 @@ SystemGCTest 重写了finalize()
 或
 空
 ```
+### finalize面试
+```java
+/**
+ * @Author 房博坤
+ * @Date 2023/2/22 12:17
+ * @Version 1.0.1
+ */
+@Slf4j
+public class TestFinalize {
+
+
+
+
+    public static void main(String[] args) throws IOException {
+        new Dog("1")  ;
+        new Dog("2");
+        new Dog("3");
+        System.gc();
+        System.in.read();
+     }
+}
+@Slf4j
+class Dog{
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Dog(String name) {
+        this.name = name;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        log.debug("{}被干掉了",this.name);
+    }
+}
+```
+当重写finalize方法的时候，调用dog的构造方法，会将这个新创建的对象包装成一个finalize对象，存入finalize双向链表当中，在进行GC的时候，
+![](../img/2023-2-22/finalize%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8.png)
+就会把狗对象对应的finalize方法加入到referenceQueue队列当中
+
+在unfinalized队列当中，这些对象并没有调用finalize方法
+
+dog1，dog2，dog3在加入referenceQuque队列当中他们的虚引用，软引用，弱引用已经消失，但是finalize并没有消失，所以GC也不会去调用它
+
+为什么我们要使用
+
+```java
+system.in.read()
+```
+
+在进入finalizer中
+```java
+    static {
+        ThreadGroup tg = Thread.currentThread().getThreadGroup();
+        for (ThreadGroup tgn = tg;
+             tgn != null;
+             tg = tgn, tgn = tg.getParent());
+        Thread finalizer = new FinalizerThread(tg);
+        finalizer.setPriority(Thread.MAX_PRIORITY - 2);
+        finalizer.setDaemon(true);
+        finalizer.start();
+    }
+```
+这里的将finalizer设置成为一个守护线程，这个线程在主线程运行完就会自动消失
+
+## 为社么finalize方法非常不好
+1. finalizeThread是守护线程，代码可能没有执行完，线程就结束了，造成资源没有释放
+2. 重写finalize在第一次进行GC的时候并不会去回收这个内存，而是要把它加入到unfinalize队列当中，因为要等着finalizeThread调用完finalize。把他从第一个unfinalizd队列移除后，第二次才能真正释放内存
+
+3. gc本来就是内存不足引起的，finalize调用很慢，两个队列都是串行执行，不能及时释放内存，内存不及时释放就会进入老年代，老年代垃圾积累过多就会执行full gc，full gc释放内存的速度仍然赶不上新对象创建的速度，就会出现OOM
+
 ### 手动 GC 理解不可达对象的回收行为
 ```java
 //加上参数：  -XX:+PrintGCDetails

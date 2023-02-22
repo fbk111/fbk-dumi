@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as n,a as l}from"./app.05a04f5e.js";const d=JSON.parse('{"title":"c-array","description":"","frontmatter":{},"headers":[],"relativePath":"c/array.md","lastUpdated":1672415033000}'),p={name:"c/array.md"},e=l("",7),o=[e];function r(c,t,i,y,F,C){return a(),n("div",null,o)}const u=s(p,[["render",r]]);export{d as __pageData,u as default};

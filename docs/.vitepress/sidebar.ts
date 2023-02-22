@@ -95,6 +95,7 @@ export default {
         { text: "BIO和NIO的区别", link: "/java/BIO和NIO的区别.md" },
         { text: "JAVA8新特性", link: "/java/java8.md" },
         { text: "optional类", link: "/java/Optional类.md" },
+        { text: "java面试题", link: "/java/java面试题.md" },
       ],
     },
     {
@@ -111,6 +112,7 @@ export default {
         { text: "jvm7", link: "/jvm/jvm7.md" },
         { text: "jvm8", link: "/jvm/jvm8.md" },
         { text: "jvm9", link: "/jvm/jvm9.md" },
+        { text: "jvm10", link: "/jvm/jvm10.md" },
       ],
     },
     {
