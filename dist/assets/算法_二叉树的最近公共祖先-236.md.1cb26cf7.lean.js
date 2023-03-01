@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,a as l}from"./app.1ab3fa21.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"算法/二叉树的最近公共祖先-236.md","lastUpdated":1675784349000}'),p={name:"算法/二叉树的最近公共祖先-236.md"},o=l("",1),e=[o];function t(r,c,D,y,A,C){return n(),a("div",null,e)}const u=s(p,[["render",t]]);export{i as __pageData,u as default};

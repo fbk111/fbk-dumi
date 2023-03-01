@@ -5,7 +5,8 @@
 地点：济南
 >足够优秀再大方拥有
 ## slice和splice
-只需要记住slice(start,end),并且返回一个新数组
+只需要记住slice(start,end),并且返回一个新数组，而且这个slice在进行切割的时候，比如说(1,-1)这是从开头的第二个切割到倒数第二个，因为他一直遵循的是左闭右开原则
+
 
 splice(start,deleteCount,item1,item2...)，并且splice是一个在原数组的基础上进行操作的方法
 

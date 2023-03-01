@@ -116,7 +116,7 @@ export default {
       ],
     },
     {
-      text: "📗 JVM",
+      text: "📗 JUC",
       collapsible: true,
       collapsed: false,
       items: [
@@ -125,6 +125,7 @@ export default {
         { text: "juc3", link: "/juc/JUC3.md" },
         { text: "juc4", link: "/juc/JUC4.md" },
         { text: "juc5", link: "/juc/JUC5.md" },
+        { text: "volatile", link: "/juc/volatile.md" },
       ],
     },
     {

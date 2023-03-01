@@ -50,7 +50,8 @@ class StaticProxyTest{
     }
 }
 ```
-## 动态代理
+## jdk动态代理
+
 
 动态代理可以让我们在运行时动态生成代理类，解耦程度更高。Java 动态代理的实现主要借助于 java.lang.reflect 包中的 Proxy 类与 InvocationHandler 接口，所有对动态代理对象的方法调用都会转发到 InvocationHandler 中的 invoke() 方法中实现。一般我们称实现了 InvocationHandler 接口的类为调用处理器。
 
